@@ -81,3 +81,108 @@ let usuario: {nome: string, idade: number} = {
 //     name: 'joao',
 //     age: 22
 // }
+
+let funcionario: {
+    supervisores: string[],
+    baterPonto: (horas: number) => string
+} = {
+    supervisores: ['ana', 'fernando'],
+    baterPonto(horario: number): string {
+        if(horario >= 8) return 'Ponto normal'
+        else return 'Ponto atrasado'
+    }
+}
+
+console.log(funcionario.supervisores)
+console.log(funcionario.baterPonto(8))
+console.log(funcionario.baterPonto(9))
+
+// Alias
+type Funcionario =  {
+    supervisores: string[],
+    baterPonto: (horas: number) => string
+}
+
+let funcionario2: Funcionario = {
+    supervisores: ['carla', 'joao'],
+    baterPonto(horario: number): string {
+        if(horario >= 8) return 'Ponto normal'
+        else return 'Ponto atrasado'
+    }
+}
+
+// union types
+
+let nota: number | string = 13
+
+console.log(`Minha nota é ${nota}!`)
+
+// never
+function falha(msg: string): never {
+    throw new Error(msg)
+}
+
+const produto = {
+    nome: 'oi',
+    preco: -1,
+    validarProduto() {
+        if(!this.nome || this.nome.trim().length === 0) {
+            falha('Nome inválido')
+        }
+    }
+}
+
+produto.validarProduto()
+
+let altura = 12
+// altura = null
+
+let alturaOpcional: null | number = null
+
+type Contato = {
+    nome: string,
+    tel1: string,
+    tel2: string | null,
+}
+
+const contato1: Contato = {
+    nome: 'fulano',
+    tel1: '343242552',
+    tel2: null
+}
+
+// valores q recebem null sao any por padrão
+let podeSerNulo = null
+podeSerNulo = 1
+podeSerNulo = 'abc'
+podeSerNulo = true
+podeSerNulo = []
+
+
+type ContaBancaria =  {
+    saldo: number,
+    depositar: (valor: number) => void
+}
+
+let conta: ContaBancaria = {
+    saldo: 3456,
+    depositar(valor: number): void {
+        this.saldo += valor
+    }
+}
+
+type Correntista = {
+    nome: String
+    contaBancaria: ContaBancaria,
+    contatos: string[]
+}
+
+let correntista: Correntista = {
+    nome: 'Ana Silva',
+    contaBancaria: conta,
+    contatos: ['34567890', '98765432']
+}
+ 
+console.log('\n\n\n\n')
+correntista.contaBancaria.depositar(3000)
+console.log(correntista)
