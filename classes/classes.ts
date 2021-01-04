@@ -119,3 +119,29 @@ const f40 = new Ferrari('f40', 324)
 console.log(`${f40.marca} - ${f40.modelo}`)
 console.log(f40.acelerar())
 console.log(f40.frear())
+
+class Unico {
+    private static instance: Unico = new Unico
+    private constructor() {}
+
+    static getInstance(): Unico {
+        return Unico.instance
+    }
+    agora() {
+        return new Date
+    }
+}
+
+console.log(Unico.getInstance().agora())
+
+
+class Aviao {
+    public readonly modelo: string 
+    constructor(modelo: string, public readonly prefixo: string) {
+        this.modelo = modelo
+    }
+}
+
+const turboHelice = new Aviao('Tu-114', 'PT-ABC')
+console.log('-----------')
+console.log(turboHelice)
