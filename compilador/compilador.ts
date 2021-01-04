@@ -1,9 +1,25 @@
-let canal: string = 'gaveta'
-let inscritos: number = 222222
+let canal: string = 'Gaveta'
+let inscritos: number = 610234
 
 // canal = inscritos
+console.log(`Canal = ${canal}`)
 
-console.log(canal)
+// let nome = 'Pedro'
 
+function soma(a: any, b: any) {
+    return a + b
+}
 
-console.log('\n\n\n\n')
+let qualquerCoisa
+qualquerCoisa = 12
+qualquerCoisa = 'abc'
+
+function saudar(isManha: boolean): string {
+    let saudacao: string
+    if(isManha) {
+        saudacao = 'Bom Dia!'
+    } else {
+        saudacao = 'Tenha uma boa vida!'
+    }
+    return saudacao
+}
